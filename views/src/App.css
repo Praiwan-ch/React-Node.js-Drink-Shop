@@ -1,0 +1,230 @@
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@200;300;400;500;600;700;800&display=swap');
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+section {
+  display: flex;
+}
+
+.main {
+  width: 70%;
+  background: #9999;
+  min-height: 100vh;
+}
+
+.bill{
+  width: 30%;
+  text-align: center;
+}
+
+* {
+    font-family: 'Prompt';
+}
+
+#searchBox {
+    margin: 10px;
+    border-radius: 5px;
+    padding: 10px;
+    background: #FFFFFF;
+    display: flex;
+    align-items: center;
+    width: 91%;
+    height: 25px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#searchIcon {
+    align-items: center;
+    justify-content: center;
+    padding-top: 3px;
+    font-size: 20px;
+}
+
+#searchIcon2 {
+    font-family: 'Prompt';
+    margin-left: 6px;
+    margin-right: 8px;
+    padding-top: 2px;
+    font-size: 22px;
+    font-weight: 300;
+}
+
+#searchInput {
+    margin-left: 5px;
+    border: 0;
+    background: optical;
+    outline: none;
+    width: 100%;
+}
+
+.header {
+  text-align: center;
+}
+
+.nav{
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+}
+.nav button{
+  margin-top: 15px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 15px;
+  border: none;
+}
+
+.btn {
+  width: 200px;
+  height: 40px;
+  background: #fff;
+  border-radius: 5px;
+}
+
+.card {
+  width: 230px;
+  margin-left: 10px;
+  border-radius: 8px;
+  background: #fff;
+  padding-top: 9px;
+  padding-bottom: 9px;
+  margin-left: auto;
+  margin-right: auto  ;
+}
+
+.img {
+  border-radius: 8px;
+  overflow: hidden;
+  width: 200px;
+  height: 160px;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+.img img{
+  width: 200px;
+  height: 160px;
+  margin-left: auto;
+  margin-right: auto;
+  
+}
+
+.label-item {
+  margin-left: 15px;
+}
+
+.row {
+  display: flex;
+  margin-right: 25px;
+  margin-left: 25px;
+  margin-bottom: 10px;
+}
+
+.list {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  height: 450px;
+}
+
+table {
+  margin-top: 50px;
+}
+
+table tr {
+  height: 40px;
+}
+
+table tr .amount{
+  text-align: left;
+  width: 80px;
+}
+
+table tr .name{
+  text-align: left;
+  width: 220px;
+}
+
+table tr .price{
+  text-align: right;
+  width: 100px;
+}
+
+hr {
+  width: 90%;
+  background: #888;
+  border: 1px solid #888;
+  border-radius: 5px;
+}
+
+.footer {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  margin-top: 20px;
+}
+
+.footer .tag{
+  text-align: left;
+  width: 70%;
+}
+
+.footer .total{
+  text-align: right;
+  width: 30%;
+}
+
+.button {
+  margin-top: 30px;
+}
+
+.order {
+  margin-left: auto;
+  margin-right: auto;
+  background: #FFF;
+  border-radius: 5px;
+  width: 118px;
+  height: 38px;
+}
+
+
