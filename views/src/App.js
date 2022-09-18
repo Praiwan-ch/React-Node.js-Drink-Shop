@@ -5,9 +5,12 @@ import { useState } from 'react';
 function App() {
     return ( 
        <section>
-            
-            <div class="main">
-                
+
+            <div class="bar">
+                <button class="toggle-menu" id="toggle-menu">|||</button>
+            </div>
+
+            <div class="main" id="main">
                 <div class="header">
                     <h4>ชื่อร้าน</h4>
                     <div class="search">
@@ -105,7 +108,7 @@ function App() {
             </div>
 
             
-            <div class="bill">
+            <div class="bill" id="bill">
                 <h4>ORDER</h4>
 
                 <div class="list">

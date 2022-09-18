@@ -124,9 +124,12 @@ section {
   border-radius: 5px;
 }
 
-@media screen and (max-width:1200px) {
+@media screen and (max-width: 4000px) {
   .card {
     min-width: 21%;
+  }
+  .bar, .toggle-menu{
+    display: none ;
   }
 }
 
@@ -178,6 +181,33 @@ section {
   }
 }
 
+@media screen and (max-width:600px) {
+  .card {
+    min-width: 40%;
+  }
+  .bill {
+    display: none;
+  }
+  .main {
+    width: 100%;
+  }
+  .bar, .toggle-menu{
+    display: block ;
+  }
+}
+
+@media screen and (max-width:300px) {
+  .card {
+    min-width: 90%;
+  }
+  .bill {
+    display: none;
+  }
+  .main {
+    width: 100%;
+  }
+}
+
 .menu {
   display: flex;
   margin-right: 1%;
@@ -198,6 +228,25 @@ section {
   margin-top: 5px;
   margin-bottom: 5px;
   height: 35%;
+}
+
+.bar {
+  background: #333;
+  position: fixed;
+  top: 0;
+  width: 600px;
+  height: 40px;
+}
+
+.toggle-menu {
+  position: fixed;
+  top: 5px;
+  right: 5px;
+  background: #FFF;
+  border-radius: 5px;
+  border: none;
+  width: 35px;
+  height: 28px;
 }
 
 .img {
