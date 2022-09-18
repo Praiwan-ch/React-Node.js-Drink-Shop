@@ -5,8 +5,9 @@ import { useState } from 'react';
 function App() {
     return ( 
        <section>
+            
             <div class="main">
-
+                
                 <div class="header">
                     <h4>ชื่อร้าน</h4>
                     <div class="search">
@@ -27,85 +28,80 @@ function App() {
                 </div>
 
                 <div class="menu">
-                    <div class="row">
-                        <div class="card col">
-                            <div class="img">
-                                <img src="https://mbpra.com/img/empty.jpg"></img>
-                            </div>
-                            <div class="label-item">
-                                <p>Americano</p>
-                                <span>50 ฿</span>
-                            </div>
+                    <div class="card">
+                        <div class="img">
+                            <img src="https://mbpra.com/img/empty.jpg"></img>
                         </div>
-                        <div class="card col">
-                            <div class="img">
-                                <img src="https://mbpra.com/img/empty.jpg"></img>
-                            </div>
-                            <div class="label-item">
-                                <p>Americano</p>
-                                <span>50 ฿</span>
-                            </div>
+                        <div class="label-item">
+                            <p>Americano</p>
+                            <span>50 ฿</span>
                         </div>
-                        <div class="card col">
-                            <div class="img">
-                                <img src="https://mbpra.com/img/empty.jpg"></img>
-                            </div>
-                            <div class="label-item">
-                                <p>Americano</p>
-                                <span>50 ฿</span>
-                            </div>
+                    </div>
+                    <div class="card">
+                        <div class="img">
+                            <img src="https://mbpra.com/img/empty.jpg"></img>
                         </div>
-                        <div class="card col">
-                            <div class="img">
-                                <img src="https://mbpra.com/img/empty.jpg"></img>
-                            </div>
-                            <div class="label-item">
-                                <p>Americano</p>
-                                <span>50 ฿</span>
-                            </div>
+                        <div class="label-item">
+                            <p>Americano</p>
+                            <span>50 ฿</span>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="img">
+                            <img src="https://mbpra.com/img/empty.jpg"></img>
+                        </div>
+                        <div class="label-item">
+                            <p>Americano</p>
+                            <span>50 ฿</span>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="img">
+                            <img src="https://mbpra.com/img/empty.jpg"></img>
+                        </div>
+                        <div class="label-item">
+                            <p>Americano</p>
+                            <span>50 ฿</span>
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class="card col">
-                            <div class="img">
-                                <img src="https://mbpra.com/img/empty.jpg"></img>
-                            </div>
-                            <div class="label-item">
-                                <p>Americano</p>
-                                <span>50 ฿</span>
-                            </div>
+                    <div class="card">
+                        <div class="img">
+                            <img src="https://mbpra.com/img/empty.jpg"></img>
                         </div>
-                        <div class="card col">
-                            <div class="img">
-                                <img src="https://mbpra.com/img/empty.jpg"></img>
-                            </div>
-                            <div class="label-item">
-                                <p>Americano</p>
-                                <span>50 ฿</span>
-                            </div>
+                        <div class="label-item">
+                            <p>Americano</p>
+                            <span>50 ฿</span>
                         </div>
-                        <div class="card col">
-                            <div class="img">
-                                <img src="https://mbpra.com/img/empty.jpg"></img>
-                            </div>
-                            <div class="label-item">
-                                <p>Americano</p>
-                                <span>50 ฿</span>
-                            </div>
+                    </div>
+                    <div class="card">
+                        <div class="img">
+                            <img src="https://mbpra.com/img/empty.jpg"></img>
                         </div>
-                        <div class="card col">
-                            <div class="img">
-                                <img src="https://mbpra.com/img/empty.jpg"></img>
-                            </div>
-                            <div class="label-item">
-                                <p>Americano</p>
-                                <span>50 ฿</span>
-                            </div>
+                        <div class="label-item">
+                            <p>Americano</p>
+                            <span>50 ฿</span>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="img">
+                            <img src="https://mbpra.com/img/empty.jpg"></img>
+                        </div>
+                        <div class="label-item">
+                            <p>Americano</p>
+                            <span>50 ฿</span>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="img">
+                            <img src="https://mbpra.com/img/empty.jpg"></img>
+                        </div>
+                        <div class="label-item">
+                            <p>Americano</p>
+                            <span>50 ฿</span>
                         </div>
                     </div>
                 </div>
-                
             </div>
 
             
