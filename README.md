@@ -15,7 +15,7 @@ npm run dev
 ```
 
 ## Run React.js server
-Use for start React.js views by entering this command in terminal of views directory
+Use for start React.js server by entering this command in terminal of views directory
 ```
 npm start
 ```
