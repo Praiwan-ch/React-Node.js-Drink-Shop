@@ -1,0 +1,23 @@
+# Node.js
+/server/node_modules
+/server/package-lock.json
+
+# React.js
+/views/node_modules
+/views/.pnp
+/views/.pnp.js
+
+/views/package-lock.json
+
+/views/.DS_Store
+/views/.env.local
+/views/.env.development.local
+/views/.env.test.local
+/views/.env.production.local
+
+/views/npm-debug.log*
+/views/yarn-debug.log*
+/views/yarn-error.log*
+
+# Production
+/views/build
