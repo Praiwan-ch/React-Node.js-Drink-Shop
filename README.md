@@ -1,4 +1,7 @@
-# Notes
+# **Drink Shop**
+**BY TEAM 1**
+
+## Notes
 This project is a Node.js and React.js library
 
 ## Installation
