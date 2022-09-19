@@ -1,0 +1,27 @@
+version: "3.4"
+
+services:
+  db:
+    image: mysql
+    container_name: Drink_shop_database
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=mypassword
+    ports:
+      - 3306:3306
+    networks:
+      - api_network
+  phpmyadmin:
+    image: phpmyadmin
+    container_name: Drink_shop_phpmyadmin
+    links:
+      - "db"
+    environment:
+      - PMA_HOST=db
+    ports:
+      - 8080:80
+    networks:
+      - api_network
+networks:
+  api_network:
