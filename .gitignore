@@ -21,4 +21,4 @@
 
 # Production
 /views/build
-/db/data
+/db/mysql

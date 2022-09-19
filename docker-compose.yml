@@ -5,7 +5,8 @@ services:
     image: mysql
     container_name: drink_shop_database
     volumes:
-      - ./db/data/mysql:/var/lib/mysql
+      - ./db/:/docker-entrypoint-initdb.d
+      - ./db/mysql:/var/lib/mysql
     env_file:
       - ./db/.env
     ports:
