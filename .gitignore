@@ -21,3 +21,4 @@
 
 # Production
 /views/build
+/data
