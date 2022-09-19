@@ -9,17 +9,4 @@ services:
     env_file:
       - ./db/.env
     ports:
-      - 3306
-   
-
-  phpmyadmin:
-    image: phpmyadmin
-    container_name: drink_shop_phpmyadmin
-    links:
-      - "db"
-    environment:
-      - PMA_HOST=db
-    ports:
-      - 8080:80
-   
-
+      - 3306:3306
