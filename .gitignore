@@ -21,4 +21,4 @@
 
 # Production
 /views/build
-/data
+/db/data
