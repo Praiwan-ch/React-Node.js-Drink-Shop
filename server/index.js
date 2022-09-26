@@ -11,7 +11,7 @@ const db = mysql.createConnection({
     host: "localhost",
     user: "root",
     password: "mypassword",
-    database: "cn_asm_php"
+    database: "drink_shop"
 })
 
 app.get('/v_asset', (req, res) => {

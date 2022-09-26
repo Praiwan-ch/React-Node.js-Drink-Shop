@@ -4,102 +4,102 @@ import { useState } from 'react';
 
 function App() {
     return ( 
-       <section>
+        <section>
 
-            <div class="bar">
-                <button class="toggle-menu" id="toggle-menu">|||</button>
+            <div className='bar'>
+                <button className='toggle-menu' id='toggle-menu'>|||</button>
             </div>
 
-            <div class="main" id="main">
-                <div class="header">
+            <div className='main' id='main'>
+                <div className='header'>
                     <h4>ชื่อร้าน</h4>
-                    <div class="search">
-                        <label for="searchInput">
-                            <div id="searchBox">
-                                <a id="searchIcon"><i class="bi bi-search"></i></a>
-                                <span id="searchIcon2">|</span>
-                                <input id="searchInput" type="text" placeholder="ค้นหา..." autocomplete="off"></input>
+                    <div className='search'>
+                        <label htmlFor='searchInput'>
+                            <div id='searchBox'>
+                                <a id='searchIcon'><i className='bi bi-search'></i></a>
+                                <span id='searchIcon2'>|</span>
+                                <input id='searchInput' type='text' placeholder='ค้นหา...' autoComplete='off'></input>
                             </div>
                         </label>
                     </div>
                 </div>
 
-                <div class="nav">
-                    <button class="btn">HOT</button>
-                    <button class="btn">COLD</button>
-                    <button class="btn">FRAPPE</button>
+                <div className='nav'>
+                    <button className='btn'>HOT</button>
+                    <button className='btn'>COLD</button>
+                    <button className='btn'>FRAPPE</button>
                 </div>
 
-                <div class="menu">
-                    <div class="card">
-                        <div class="img">
-                            <img src="https://mbpra.com/img/empty.jpg"></img>
+                <div className='menu'>
+                    <div className='card'>
+                        <div className='img'>
+                            <img src='https://mbpra.com/img/empty.jpg'></img>
                         </div>
-                        <div class="label-item">
+                        <div className='label-item'>
                             <p>Americano</p>
                             <span>50 ฿</span>
                         </div>
                     </div>
-                    <div class="card">
-                        <div class="img">
-                            <img src="https://mbpra.com/img/empty.jpg"></img>
+                    <div className='card'>
+                        <div className='img'>
+                            <img src='https://mbpra.com/img/empty.jpg'></img>
                         </div>
-                        <div class="label-item">
+                        <div className='label-item'>
                             <p>Americano</p>
                             <span>50 ฿</span>
                         </div>
                     </div>
-                    <div class="card">
-                        <div class="img">
-                            <img src="https://mbpra.com/img/empty.jpg"></img>
+                    <div className='card'>
+                        <div className='img'>
+                            <img src='https://mbpra.com/img/empty.jpg'></img>
                         </div>
-                        <div class="label-item">
+                        <div className='label-item'>
                             <p>Americano</p>
                             <span>50 ฿</span>
                         </div>
                     </div>
-                    <div class="card">
-                        <div class="img">
-                            <img src="https://mbpra.com/img/empty.jpg"></img>
+                    <div className='card'>
+                        <div className='img'>
+                            <img src='https://mbpra.com/img/empty.jpg'></img>
                         </div>
-                        <div class="label-item">
+                        <div className='label-item'>
                             <p>Americano</p>
                             <span>50 ฿</span>
                         </div>
                     </div>
 
-                    <div class="card">
-                        <div class="img">
-                            <img src="https://mbpra.com/img/empty.jpg"></img>
+                    <div className='card'>
+                        <div className='img'>
+                            <img src='https://mbpra.com/img/empty.jpg'></img>
                         </div>
-                        <div class="label-item">
+                        <div className='label-item'>
                             <p>Americano</p>
                             <span>50 ฿</span>
                         </div>
                     </div>
-                    <div class="card">
-                        <div class="img">
-                            <img src="https://mbpra.com/img/empty.jpg"></img>
+                    <div className='card'>
+                        <div className='img'>
+                            <img src='https://mbpra.com/img/empty.jpg'></img>
                         </div>
-                        <div class="label-item">
+                        <div className='label-item'>
                             <p>Americano</p>
                             <span>50 ฿</span>
                         </div>
                     </div>
-                    <div class="card">
-                        <div class="img">
-                            <img src="https://mbpra.com/img/empty.jpg"></img>
+                    <div className='card'>
+                        <div className='img'>
+                            <img src='https://mbpra.com/img/empty.jpg'></img>
                         </div>
-                        <div class="label-item">
+                        <div className='label-item'>
                             <p>Americano</p>
                             <span>50 ฿</span>
                         </div>
                     </div>
-                    <div class="card">
-                        <div class="img">
-                            <img src="https://mbpra.com/img/empty.jpg"></img>
+                    <div className='card'>
+                        <div className='img'>
+                            <img src='https://mbpra.com/img/empty.jpg'></img>
                         </div>
-                        <div class="label-item">
+                        <div className='label-item'>
                             <p>Americano</p>
                             <span>50 ฿</span>
                         </div>
@@ -108,39 +108,45 @@ function App() {
             </div>
 
             
-            <div class="bill" id="bill">
+            <div className='bill' id='bill'>
                 <h4>ORDER</h4>
 
-                <div class="list">
+                <div className='list'>
                     <table>
-                        <tr class="table-row">
-                            <td class="amount">x1</td>
-                            <td class="name">Americano</td>
-                            <td class="price">50 ฿</td>
-                        </tr>
-                        <tr class="table-row">
-                            <td class="amount">x2</td>
-                            <td class="name">Green Tea</td>
-                            <td class="price">200 ฿</td>
-                        </tr>
+                        <tbody>
+                            <tr className='table-row'>
+                                <td className='amount'>x1</td>
+                                <td className='name'>Americano</td>
+                                <td className='price'>50 ฿</td>
+                            </tr>
+                            <tr className='table-row'>
+                                <td className='amount'>x2</td>
+                                <td className='name'>Green Tea</td>
+                                <td className='price'>200 ฿</td>
+                            </tr>
+                        </tbody>
                     </table>
                 </div>
 
-                <hr size="2"></hr>
-                <div class="footer">
-                    <div class="tag">SUBTOTAL</div>
-                    <div class="total">250 ฿</div>
+                <hr size='2'></hr>
+                <div className='footer'>
+                    <div className='tag'>SUBTOTAL</div>
+                    <div className='total'>250 ฿</div>
                 </div>
-                <div class="footer">
-                    <div class="tag">TOTAL</div>
-                    <div class="total">250 ฿</div>
+                <div className='footer'>
+                    <div className='tag'>TOTAL</div>
+                    <div className='total'>250 ฿</div>
                 </div>
-                <div class="footer button">
-                    <button class="order">CANCEL</button>
-                    <button class="order">ORDERING</button>
+                <div className='footer button'>
+                    <button className='order' onClick={modal}>CANCEL</button>
+                    <button className='order' onClick={modal}>ORDERING</button>
                 </div>
             </div>
-       </section>
+        </section>
     );
+}
+
+function modal() {
+    alert('Test');
 }
 export default App;
