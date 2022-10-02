@@ -6,7 +6,6 @@ const app = express();
 require('dotenv').config();
 
 app.use(cors());
-app.use(express.json());
 
 const db = mysql.createConnection({
     host     :   process.env.DATABASE_HOST,
@@ -15,7 +14,7 @@ const db = mysql.createConnection({
     database :   process.env.MYSQL_DATABASE
 })
 
-app.get('/getMenu/all', (req, res) => {
+app.get('/getMenu/All', (req, res) => {
     db.query("SELECT * FROM menu", (err, result) => {
         if(err){
             console.log(err);
@@ -48,6 +47,18 @@ app.get('/getMenu/Iced', (req, res) => {
 });
 app.get('/getMenu/Frappe', (req, res) => {
     db.query("SELECT * FROM menu WHERE menu_type_id = 3", (err, result) => {
+        if(err){
+            console.log(err);
+        }else{
+            res.send(result);
+        }
+    });
+    
+});
+app.post('/getMenu/Search', (req, res) => {
+    let search = req.search
+    console.log(search);
+    db.query(`SELECT * FROM menu WHERE menu_name LIKE '%${search}%'`, (err, result) => {
         if(err){
             console.log(err);
         }else{

@@ -4,36 +4,38 @@ import { useState, useEffect } from 'react';
 
 function App() {
     const [menu, setMenu]= useState([])
+
     const getMenu = ()=>{
         axios.get('http://localhost:4000/getMenu/all').then((Response)=>{
             setMenu(Response.data)
-            console.log(1);
         })
     }
     const getMenuHot = ()=>{
         axios.get('http://localhost:4000/getMenu/Hot').then((Response)=>{
             setMenu(Response.data)
-            console.log(2);
-
         })
     }
     const getMenuIced = ()=>{
         axios.get('http://localhost:4000/getMenu/Iced').then((Response)=>{
             setMenu(Response.data)
-            console.log(3);
-
         })
     }
     const getMenuFrappe = ()=>{
         axios.get('http://localhost:4000/getMenu/Frappe').then((Response)=>{
             setMenu(Response.data)
-            console.log(4);
-
         })
     }
+    
+    const searchMenu = (search)=>{
+        axios.post('http://localhost:4000/getMenu/Search', {search: search}).then((Response)=>{
+            setMenu(Response.data)
+        })
+    }
+
     useEffect(() => {
         getMenu()
     },[]);
+
     return (  
         <section>
            
@@ -47,15 +49,20 @@ function App() {
                     <div className='search'>
                         <label htmlFor='searchInput'>
                             <div id='searchBox'>
-                                <a id='searchIcon'><i className='bi bi-search'></i></a>
+                                <span id='searchIcon'><i className='bi bi-search'></i></span>
                                 <span id='searchIcon2'>|</span>
-                                <input id='searchInput' type='text' placeholder='ค้นหา...' autoComplete='off'></input>
+                                <input id='searchInput' type='text' placeholder='ค้นหา...' autoComplete='off' 
+                                    // onInput={(event)=>{
+                                    //     searchMenu(event.target.value)
+                                    // }}
+                                ></input>
                             </div>
                         </label>
                     </div>
                 </div>
 
                 <div className='nav'>
+                    <button className='btn' onClick={getMenu}>ALL</button>
                     <button className='btn' onClick={getMenuHot}>HOT</button>
                     <button className='btn' onClick={getMenuIced}>ICED</button>
                     <button className='btn' onClick={getMenuFrappe}>FRAPPE</button>
@@ -72,18 +79,12 @@ function App() {
                                     </div>
                                     <div className='label-item'>
                                         <p>{val.menu_name}</p>
-                                        <span>{val.menu_price}</span>
+                                        <span>{val.menu_price} ฿</span>
                                     </div>
                                     </div>
                                 )
                         })
                     }
-                    <div className='card' hidden>
-                        <div className='img'>
-                            <img src='https://mbpra.com/img/empty.jpg'></img>
-                        </div>
-                    </div>
-                    
                 </div>
             </div>
 
@@ -124,9 +125,12 @@ function App() {
             </div>
         </section>
     );
+    
 }
 
 function modal() {
     alert('Test');
 }
+
+
 export default App;
