@@ -59,7 +59,6 @@ app.get('/getMenu/Frappe', (req, res) => {
 });
 
 app.post('/getMenu/Search', (req, res) => {
-    console.log(req.body.search);
     let data = req.body.search
     db.query(`SELECT * FROM menu WHERE menu_name LIKE '%${data}%'`, (err, result) => {
         if(err){    
