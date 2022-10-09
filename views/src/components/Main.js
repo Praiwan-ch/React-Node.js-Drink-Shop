@@ -1,35 +1,36 @@
 import React from "react";
 import '../App.css';
 import axios from 'axios';
-import { useState, useEffect, useDeferredValue } from 'react';
+import { useState, useEffect} from 'react';
+
+axios.defaults.baseURL = 'http://localhost:4000';
 
 export default function Main(props){
     const [menu, setMenu]= useState([])
 
     const getMenu = ()=>{
-        axios.get('http://localhost:4000/getMenu/all').then((Response)=>{
+        axios.get('/getMenu/all').then((Response)=>{
             setMenu(Response.data)
         })
     }
     const getMenuHot = ()=>{
-        axios.get('http://localhost:4000/getMenu/Hot').then((Response)=>{
+        axios.get('/getMenu/Hot').then((Response)=>{
             setMenu(Response.data)
         })
     }
     const getMenuIced = ()=>{
-        axios.get('http://localhost:4000/getMenu/Iced').then((Response)=>{
+        axios.get('/getMenu/Iced').then((Response)=>{
             setMenu(Response.data)
         })
     }
     const getMenuFrappe = ()=>{
-        axios.get('http://localhost:4000/getMenu/Frappe').then((Response)=>{
+        axios.get('/getMenu/Frappe').then((Response)=>{
             setMenu(Response.data)
         })
     }
-    
     const searchMenu = val =>{
         const data = { search: val };
-        axios.post('http://localhost:4000/getMenu/Search', data).then((res) => {
+        axios.post('/getMenu/Search', data).then((res) => {
             setMenu(res.data)
         })
         .catch(err => {
