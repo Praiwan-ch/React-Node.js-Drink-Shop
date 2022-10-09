@@ -6,6 +6,8 @@ const app = express();
 require('dotenv').config();
 
 app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 const db = mysql.createConnection({
     host     :   process.env.DATABASE_HOST,
@@ -55,17 +57,17 @@ app.get('/getMenu/Frappe', (req, res) => {
     });
     
 });
+
 app.post('/getMenu/Search', (req, res) => {
-    let search = req.search
-    console.log(search);
-    db.query(`SELECT * FROM menu WHERE menu_name LIKE '%${search}%'`, (err, result) => {
-        if(err){
+    console.log(req.body.search);
+    let data = req.body.search
+    db.query(`SELECT * FROM menu WHERE menu_name LIKE '%${data}%'`, (err, result) => {
+        if(err){    
             console.log(err);
         }else{
             res.send(result);
         }
     });
-    
 });
 
 app.listen(process.env.PORT, () => {

@@ -27,10 +27,14 @@ export default function Main(props){
         })
     }
     
-    const searchMenu = (search)=>{
-        axios.post('http://localhost:4000/getMenu/Search', {search: search}).then((Response)=>{
-            setMenu(Response.data)
+    const searchMenu = val =>{
+        const data = { search: val };
+        axios.post('http://localhost:4000/getMenu/Search', data).then((res) => {
+            setMenu(res.data)
         })
+        .catch(err => {
+            console.error(err);
+        });
     }
 
     useEffect(() => {
@@ -48,9 +52,9 @@ export default function Main(props){
                             <span id='searchIcon'><i className='bi bi-search'></i></span>
                             <span id='searchIcon2'>|</span>
                             <input id='searchInput' type='text' placeholder='ค้นหา...' autoComplete='off' 
-                                // onInput={(event)=>{
-                                //     searchMenu(event.target.value)
-                                // }}
+                                onInput={(event)=>{
+                                    searchMenu(event.target.value)
+                                }}
                             ></input>
                         </div>
                     </label>
@@ -76,7 +80,7 @@ export default function Main(props){
                                 </div>
                                 <div className='label-item'>
                                     <p>{val.menu_name}</p>
-                                    <div class="btn-group">
+                                    <div className="btn-group">
                                         <span>{val.menu_price} ฿</span>
                                         <div className="btn-card" id={val.menu_id}  
                                             onClick={(event)=>{
