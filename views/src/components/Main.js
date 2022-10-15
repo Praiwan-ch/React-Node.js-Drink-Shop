@@ -1,5 +1,5 @@
 import React from "react";
-import '../App.css';
+import styleApp from '../App.css';
 import axios from 'axios';
 import { useState, useEffect} from 'react';
 
@@ -7,6 +7,8 @@ axios.defaults.baseURL = 'http://localhost:4000';
 
 export default function Main(props){
     const [menu, setMenu]= useState([])
+
+    let current_menu = []
 
     const getMenu = ()=>{
         axios.get('/getMenu/all').then((Response)=>{
@@ -45,6 +47,7 @@ export default function Main(props){
 
     return (
         <div className='main' id='main'>
+            <div className={styleApp}></div>
             <div className='header'>
                 <h4>"San-kai" Drink's Shop</h4>
                 <div className='search'>
@@ -84,8 +87,8 @@ export default function Main(props){
                                     <div className="btn-group">
                                         <span>{val.menu_price} ฿</span>
                                         <div className="btn-card" id={val.menu_id}  
-                                            onClick={(event)=>{
-                                            send_object(event.target.id)
+                                            onClick={()=>{
+                                            send_object(val)
                                         }}></div>
                                     </div>
                                 </div>
@@ -98,6 +101,7 @@ export default function Main(props){
     );
 
     function send_object(val){
-        console.log(val)
+        current_menu.push(val)
+        console.log(current_menu);
     }
 }

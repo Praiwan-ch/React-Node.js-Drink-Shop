@@ -1,13 +1,14 @@
-import './App.css';
+import Template from './components/Template';
 import Basket from './components/Basket';
+import Login from './components/Login';
 import Main from './components/Main';
 
 function App(){
     return(
-        <section>
-                <Main></Main>
-                <Basket></Basket>
-        </section>
+        <div>
+            {/* <Login></Login> */}
+            <Template></Template>
+        </div>
     );
 }
 

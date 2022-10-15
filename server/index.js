@@ -17,7 +17,7 @@ const db = mysql.createConnection({
 })
 
 app.get('/getMenu/All', (req, res) => {
-    db.query("SELECT * FROM menu", (err, result) => {
+    db.query("SELECT * FROM menu JOIN menu_type ON menu.menu_type_id = menu_type.menu_type_id ORDER BY menu_id", (err, result) => {
         if(err){
             console.log(err);
         }else{
@@ -60,7 +60,7 @@ app.get('/getMenu/Frappe', (req, res) => {
 
 app.post('/getMenu/Search', (req, res) => {
     let data = req.body.search
-    db.query(`SELECT * FROM menu WHERE menu_name LIKE '%${data}%'`, (err, result) => {
+    db.query(`SELECT * FROM menu JOIN menu_type ON menu.menu_type_id = menu_type.menu_type_id WHERE menu_name LIKE '%${data}%' ORDER BY menu_id`, (err, result) => {
         if(err){    
             console.log(err);
         }else{
