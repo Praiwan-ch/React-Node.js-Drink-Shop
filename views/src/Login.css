@@ -1,45 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@200;300;400;500;600;700;800&display=swap');
 
-.App {
-     text-align: center;
-}
-
-.App-logo {
-     height: 40vmin;
-     pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-     .App-logo {
-          animation: App-logo-spin infinite 20s linear;
-     }
-}
-
-.App-header {
-     background-color: #282c34;
-     min-height: 100vh;
-     display: flex;
-     flex-direction: column;
-     align-items: center;
-     justify-content: center;
-     font-size: calc(10px + 2vmin);
-     color: white;
-}
-
-.App-link {
-     color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-     from {
-          transform: rotate(0deg);
-     }
-
-     to {
-          transform: rotate(360deg);
-     }
-}
-
 .login-bg {
      width: 100vw;
      height: 100vh;
@@ -121,7 +81,7 @@ label {
 }
 
 .label {
-     margin-top: 15px;
+     margin-top: 15px !important;
 }
 
 #insertBox {
@@ -132,7 +92,7 @@ label {
      display: flex;
      align-items: center;
      width: 100%;
-     height: 20px;
+     height: 40px;
 }
 
 #icon {
@@ -145,7 +105,7 @@ label {
 
 #username,
 #password {
-     margin-left: 5px;
+     margin-left: 5px !important;
      border: 0;
      background: optical;
      outline: none;
@@ -153,8 +113,11 @@ label {
      font-size: 16px;
 }
 
-.btn {
-     margin-top: 10px;
+.btn-login {
+     height: 35px;
+     border-radius: 10px;
+     background: #FFF;
+     margin-top: 20px;
      outline: none;
      border: none;
      width: 100px;

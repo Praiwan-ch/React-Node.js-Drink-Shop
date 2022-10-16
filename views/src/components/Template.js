@@ -1,7 +1,7 @@
-import React from 'react';
-import Manage from './Manage';
-import Add from './Add';
 import '../Template.css';
+import React from 'react';
+import NavPage from './NavPage'
+import { NavLink } from 'react-router-dom';
 
 export default function Template() {
      return (
@@ -26,26 +26,27 @@ export default function Template() {
                     <div className="main-content">
                          <div className="side-bar">
                               <div className="list-menu">
-                                   <a href="#">
-                                        <div className="list-item active-menu" onClick={e=>listMenu(e) } id="Manage"><i className="fa-solid fa-list-check icon" aria-disabled></i><span className="link-text">จัดการเมนู</span></div>
-                                   </a>
-                                   <a href="#">
+                                   <NavLink to={"/Manage"}>
+                                        <div className="list-item" onClick={e=>listMenu(e) } id="Manage"><i className="fa-solid fa-list-check icon" aria-disabled></i><span className="link-text">จัดการเมนู</span></div>
+                                   </NavLink>
+                                   <NavLink to={"/Add"}>
                                         <div className="list-item" onClick={e=>listMenu(e)} id="Add"><i className="fa-solid fa-plus icon iconsF" aria-disabled></i><span className="link-text">เพิ่มเมนู</span></div>
-                                   </a>
-                                   <a href="#">
+                                   </NavLink>
+                                   <NavLink to={"/#"}>
                                         <div className="list-item" onClick={e=>listMenu(e)}><i className="fa-solid fa-store icon" aria-disabled></i><span className="link-text">Menu 3</span></div>
-                                   </a>
+                                   </NavLink>
                               </div>
                          </div>
                          {/*----- Main content -----*/}
                          <div className="display-content" id="display-content">
-                              <Manage></Manage>
-                              {/* <Add></Add> */}
+                              <NavPage/>
                          </div>
                          {/*----- Main content -----*/}
                     </div>
                     <div className="logout" id="modal-logout">
-                         <div className="logout-btn"><i className="fa-solid fa-right-from-bracket icon"></i>Logout</div>
+                         <NavLink to={"/#"}>
+                              <div className="logout-btn"><i className="fa-solid fa-right-from-bracket icon"></i>Logout</div>
+                         </NavLink>
                     </div>
                </div>
           </div>

@@ -1,5 +1,5 @@
 import React from "react";
-import Style from '../Login.css';
+import '../Login.css';
 
 export default function Login(){
     
@@ -31,7 +31,7 @@ export default function Login(){
                          </label>
                          <p className="error">Wrong username or password.</p>
                     </div>
-                    <button className="btn">เข้าสู่ระบบ</button>
+                    <button className="btn-login">เข้าสู่ระบบ</button>
                </div>
           </div> 
      );
