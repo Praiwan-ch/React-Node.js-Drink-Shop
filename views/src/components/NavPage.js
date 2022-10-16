@@ -1,6 +1,7 @@
 import React from "react";
 import Add from '../Pages/Add'
 import Manage from '../Pages/Manage'
+import Login from './Login'
 import { Routes, Route } from "react-router-dom";
 
 const NavPage = () => {
@@ -10,6 +11,7 @@ const NavPage = () => {
                     <Routes>
                          <Route path="/Manage" element={<Manage/>} />
                          <Route path="/Add" element={<Add/>} />
+                         <Route path="/Login" element={<Login/>} />
                     </Routes>
                </div>
           </React.Fragment>

@@ -44,7 +44,7 @@ export default function Template() {
                          {/*----- Main content -----*/}
                     </div>
                     <div className="logout" id="modal-logout">
-                         <NavLink to={"/#"}>
+                         <NavLink to={"/Login"}>
                               <div className="logout-btn"><i className="fa-solid fa-right-from-bracket icon"></i>Logout</div>
                          </NavLink>
                     </div>
