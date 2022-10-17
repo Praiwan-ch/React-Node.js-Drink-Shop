@@ -1,17 +1,63 @@
 import '../Template.css';
-import {React, useEffect} from 'react';
+import {React, useEffect, useState} from 'react';
 import NavPage from './NavPage'
-import Add from '../Pages/Add'
-import Manage from '../Pages/Manage'
 import { NavLink, useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import Swal from 'sweetalert2'
 
-export default function Template(props) {
+export default function Template() {
+     // Set axios default baseURL 
+     axios.defaults.baseURL = 'http://localhost:4000';
+
      const navigate = useNavigate();
+     const [user, setUser] = useState('')
+
+     const auth = ()=>{
+          axios.get('/auth').then((res)=>{
+               if(res.data){
+                    setUser(res.data)
+               }else{
+                    navigate('/Login') 
+               }
+          })
+     }
+
+     const clearAuth = ()=>{
+          let confirm = 0
+          Swal.fire({
+               title: 'Are you sure?',
+               icon: 'warning',
+               showCancelButton: true,
+               confirmButtonColor: '#FF0000bb',
+               cancelButtonColor: '#B9B9B9',
+               confirmButtonText: 'Logout'
+             }).then((result) => {
+               if (result.isConfirmed) {
+                    confirm = 1
+               }
+          }).then(()=>{
+               if(confirm){
+                    axios.get('/logout').then((res)=>{
+                         if(res.data){
+                              navigate('/Login') 
+                         }else{
+                              Swal.fire({
+                                   title: 'Logout failed',
+                                   text: 'กรุณาลองอีกครั้ง',
+                                   icon: 'error',
+                                   confirmButtonText: 'ตกลง',
+                                   confirmButtonColor: '#B9B9B9',
+                              })
+                         }
+                    })
+               }
+          })
+     }
+
      useEffect(()=>{
-          if(!props.auth){
-               navigate('/Login')
-          }
+          auth()
      },[])
+     
      return (
           <div className="manage">
                <div className="background">
@@ -23,7 +69,7 @@ export default function Template(props) {
                <div className="profile" id="logout" onClick={logout}>
                               <img className="img-profile" src="https://as1.ftcdn.net/v2/jpg/03/16/12/52/1000_F_316125289_3GTL3Yd9JVQz3Nw50uAEEkOpX6GvK0LE.jpg"></img>
                               <div className="profile-content">
-                                   <p className="profile-name">Rachanon Montree</p>
+                                   <p className="profile-name">{user}</p>
                                    <p className="profile-role">Sensei</p>
                               </div>
                          </div>
@@ -52,9 +98,13 @@ export default function Template(props) {
                          {/*----- Main content -----*/}
                     </div>
                     <div className="logout" id="modal-logout">
-                         <NavLink to={"/Login"}>
-                              <div className="logout-btn"><i className="fa-solid fa-right-from-bracket icon"></i>Logout</div>
-                         </NavLink>
+                         {/* <NavLink to={"/Login"}> */}
+                              <div className="logout-btn" 
+                                   onClick={()=>{
+                                        clearAuth()
+                                   }}
+                              ><i className="fa-solid fa-right-from-bracket icon"></i>Logout</div>
+                         {/* </NavLink> */}
                     </div>
                </div>
           </div>

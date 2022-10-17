@@ -1,4 +1,3 @@
-const formidable = require('formidable');
 const express = require('express');
 const mysql = require('mysql2');
 const cors = require('cors');
@@ -17,6 +16,39 @@ const db = mysql.createConnection({
     user     :   process.env.DATABASE_USERNAME,
     password :   process.env.MYSQL_ROOT_PASSWORD,
     database :   process.env.MYSQL_DATABASE
+})
+
+let auth  = '' 
+
+// Login
+app.post('/login', (req, res)=>{
+    db.query(`SELECT * FROM user WHERE usr_username = '${req.body.username}' AND usr_password = '${req.body.password}'`, (err, result) => {
+        if(err || !result.length){
+            res.send(false)
+        }else{
+            auth = result[0].usr_firstname + " " + result[0].usr_lastname
+            res.send(true)
+        }
+    });
+})
+
+// Authorization
+app.get('/auth', (req, res)=>{
+    if(auth !== ''){
+        res.send(auth)
+    }else{
+        res.send(false)
+    }
+})
+
+// Logout
+app.get('/logout', (req, res)=>{
+    auth = ''
+    if(auth === ''){
+        res.send(true)
+    }else{
+        res.send(false)
+    }
 })
 
 // Get all menu

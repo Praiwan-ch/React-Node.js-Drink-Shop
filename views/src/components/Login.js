@@ -1,10 +1,43 @@
-import React from "react";
-import '../Login.css';
+import {React, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2'
+import axios from 'axios';
+import $ from 'jquery';
+import '../Login.css';
+
 
 export default function Login(){
     
+     // Set default axios baseURL 
+     axios.defaults.baseURL = 'http://localhost:4000';
+
      let navigate = useNavigate()
+
+     // Set state username password
+     const [username, setUsername] = useState('')
+     const [password, setPassword] = useState('')
+
+     // Send request to login 
+     const handleSubmit = ()=>{
+          axios.post('/login', {username: username, password:password}).then((res)=>{
+               if(res.data){
+                    navigate('/Home/Manage')
+               }else{
+                    setAlert()
+               }
+          })
+     }
+
+     // Alert login failed
+     const setAlert = ()=>{
+          Swal.fire({
+               title: 'Login failed',
+               text: 'กรุณาตรวจสอบข้อมูลอีกครั้ง',
+               icon: 'error',
+               confirmButtonText: 'ตกลง',
+               confirmButtonColor: '#B9B9B9',
+          })
+     }
 
      return (
           <div className="login-bg">
@@ -22,21 +55,29 @@ export default function Login(){
                          <label htmlFor="username" className="inputLogin">
                                 <div id="insertBox">
                                     <a id="icon"><i className="fa-solid fa-circle-user"></i></a>
-                                    <input id="username" name="username" type="text" placeholder=" Username" autoComplete="off"></input>
+                                    <input id="username" name="username" type="text" placeholder=" Username" autoComplete="off"
+                                        onInput={
+                                             (e)=>{setUsername(e.target.value)}
+                                        }
+                                    ></input>
                                 </div>
                          </label>
                          <label htmlFor="password" className="label">Password</label>
                          <label htmlFor="password" className="inputLogin">
                                 <div id="insertBox">
                                     <a id="icon"><i className="fa-solid fa-unlock-keyhole"></i></a>
-                                    <input id="password" name="passowrd" type="text" placeholder=" Password" autoComplete="off"></input>
+                                    <input id="password" name="password" type="text" placeholder=" Password" autoComplete="off"
+                                        onInput={
+                                             (e)=>{setPassword(e.target.value)}
+                                        }
+                                    ></input>
                                 </div>
                          </label>
-                         <p className="error">Wrong username or password.</p>
+                         <p className="error" id="err">Wrong username or password.</p>
                     </div>
                     <button className="btn-login"
                          onClick={()=>{
-                              navigate('/Home/Manage')
+                              handleSubmit()
                          }}
                     >เข้าสู่ระบบ</button>
                </div>

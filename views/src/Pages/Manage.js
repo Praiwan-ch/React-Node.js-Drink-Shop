@@ -36,42 +36,6 @@ export default function Manage() {
      let [menu_type_id, setMenu_type_id] = useState("1")
      let [menu_image, setMenu_image] = useState("")
 
-     const addMenu = ()=>{
-          axios.put('/addMenu', {
-               menu_name:     menu_name,
-               menu_price:    menu_price,
-               menu_type_id:  menu_type_id,
-               menu_image:    menu_image
-          }).then((res)=>{
-               handleUpload()
-               setMenuInfo([
-                    ...menuInfo,
-                    {
-                         menu_name:     menu_name,
-                         menu_price:    menu_price,
-                         menu_type_id:  menu_type_id,
-                         menu_image:    menu_image 
-                    }
-               ])
-               if(res.data){
-                    Swal.fire({
-                         title: 'เพิ่มข้อมูลสำเส็จ',
-                         icon: 'success',
-                         confirmButtonText: 'ตกลง',
-                         confirmButtonColor: '#71DC88',
-                    })  
-               }else{
-                    Swal.fire({
-                         title: 'เพิ่มข้อมูลไม่สำเส็จ',
-                         text: 'กรุณาลองอีกครั้ง',
-                         icon: 'warning',
-                         confirmButtonText: 'ยกเลิก',
-                         confirmButtonColor: '#B9B9B9',
-                    })
-               }
-          })
-     }
-
      const checkInput = ()=>{
           if(menu_name == '' || menu_price == '' || menu_type_id == '' || menu_image == ''){
                Swal.fire({
