@@ -242,7 +242,7 @@ export default function Manage() {
                                                   <td>{val.menu_price}</td>
                                                   <td>
                                                        <div className="table-img">
-                                                            <img src={'./image/'+val.menu_image}></img>
+                                                            <img src={'../../image/'+val.menu_image}></img>
                                                        </div>
                                                   </td>
                                                   <td>
@@ -331,7 +331,7 @@ export default function Manage() {
                                                                  <i className="fa-solid fa-image"></i>
                                                                  <p>เพิ่มรูป</p>
                                                             </div>
-                                                            <img className="image-edit" id="image-edit" src={'./image/'+menu_image}/>
+                                                            <img className="image-edit" id="image-edit" src={'../../image/'+menu_image}/>
                                                             <img className="image-output" id="image-output" src={image}/>
                                                        </div>
                                                   </label>

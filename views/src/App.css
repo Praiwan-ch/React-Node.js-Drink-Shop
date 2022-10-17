@@ -1,54 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@200;300;400;500;600;700;800&display=swap');
 
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-section {
+.display-shop {
   display: flex;
 }
 
-.main {
+.main-shop {
   width: 75%;
   background: #D7C0AE;
   min-height: 100vh;
-  height: 100%;
-  /* overflow: hidden; */
+  overflow-y: auto !important;
 }
 
 .bill{
@@ -58,6 +18,13 @@ section {
   height: 100vh;
   text-align: center;
   background: #EEE3CB;
+}
+
+.title-shop {
+  font-size: 28px;
+  font-weight: 600;
+  text-align: center;
+  padding-top: 10px;
 }
 
 * {
@@ -72,7 +39,7 @@ section {
     display: flex;
     align-items: center;
     width: 91%;
-    height: 25px;
+    height: 40px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -102,7 +69,13 @@ section {
 }
 
 .header {
+  height: 50px;
   text-align: center;
+}
+
+.header h4 {
+  padding-top: 10px;
+  height: 50px;
 }
 
 .nav{
@@ -130,6 +103,12 @@ section {
   cursor: pointer;
 }
 
+.menu-name {
+  margin-top: 15px !important;
+  margin: 0;
+  padding: 0;
+}
+
 @media screen and (max-width: 4000px) {
   .card {
     min-width: 17%;
@@ -146,7 +125,7 @@ section {
   .bill {
     width: 30%;
   }
-  .main {
+  .main-shop {
     width: 70%;
   }
 }
@@ -158,55 +137,61 @@ section {
   .bill {
     width: 30%;
   }
-  .main {
+  .main-shop {
     width: 70%;
   }
 }
 
 @media screen and (max-width:880px) {
   .card {
-    min-width: 47%;
+    min-width: 40%;
   }
   .bill {
     width: 35%;
   }
-  .main {
+  .main-shop {
     width: 65%;
   }
 }
 
+/* @media screen and (max-width:600px) {
+  .card {
+    min-width: 40%;
+  }
+  .bill {
+    width: 40%;
+  }
+  .main-shop {
+    width: 60%;
+  }
+} */
+
 @media screen and (max-width:650px) {
   .card {
-    min-width: 47%;
+    min-width: 40%;
   }
   .bill {
     width: 42%;
   }
-  .main {
+  .main-shop {
     width: 58%;
   }
 }
 
 @media screen and (max-width:600px) {
   .card {
-    min-width: 80%;
-  }
-  .bill {
-    width: 40%;
-  }
-  .main {
-    width: 60%;
+    min-width: 95%;
   }
 }
 
 @media screen and (max-width:500px) {
   .card {
-    min-width: 80%;
+    min-width: 45%;
   }
   .bill {
     display: none;
   }
-  .main {
+  .main-shop {
     width: 100%;
   }
   .bar, .toggle-menu{
@@ -221,18 +206,17 @@ section {
   .bill {
     display: none;
   }
-  .main {
+  .main-shop {
     width: 100%;
   }
 }
 
 .menu {
   display: flex;
-  margin-right: 1%;
-  margin-left: 1%;
-  flex-direction: row;
-  justify-content: left;
-  flex-flow: wrap;
+  margin-right: auto;
+  margin-left: auto;
+  justify-content:space-around;
+  flex-flow: row wrap;
 }
 
 .card {
@@ -241,8 +225,8 @@ section {
   background: #fff;
   padding-top: 9px;
   padding-bottom: 9px;
-  margin-left: 1.5%;
-  margin-right: 1.5%;
+  margin-left: auto;
+  margin-right: auto;
   margin-top: 5px;
   margin-bottom: 5px;
   height: 220px;
@@ -302,7 +286,7 @@ section {
 }
 
 table {
-  margin-top: 50px;
+  margin-top: 35px;
 }
 
 table tr {
@@ -372,26 +356,41 @@ hr {
 }
 
 ::-webkit-scrollbar-track {
-  background: none; 
+  background: none !important; 
 }
  
 ::-webkit-scrollbar-thumb {
-  background: #333; 
-  border-radius: 5px;
+  background: #282c34; 
+  border-radius: 3px;
+
 }
 
-.btn-card {
-  border: 1px solid #0e0e0e;
-  border-radius: 50%;
-  width: 35px;
+.scroll-menu {
+  overflow: auto;
+}
+
+html {
+  overflow: auto !important;
+}
+
+.btn-exit{
+  position: fixed;
+  top: 25px;
+  right: 10px;
+  z-index: 50;
+  border: none;
+  outline: none;
   height: 35px;
+  padding: 0px 30px 0px 30px;
+  border-radius: 10px;
+  background: #FF0000AA;
+  color: #FFF;
+  border: 2px solid rgba(255, 255, 255, 0.2);
 }
 
-.btn-group span{
-  width: 70%;
-}
-
-.btn-group {
-  display: flex;
-  margin-top: -10px;
+.order-title {
+  text-align: left;
+  margin-top: 25px;
+  margin-left: 15px;
+  font-weight: 600;
 }

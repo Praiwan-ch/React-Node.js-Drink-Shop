@@ -1,15 +1,19 @@
 import './Template.css';
 import React from "react";
-import Template from './components/Template';
+import Home from './components/Template';
 import Login from './components/Login';
-import { BrowserRouter } from "react-router-dom";
+import Shop from './components/Shop';
+import { Routes, Route, BrowserRouter} from "react-router-dom";
 
 function App(){
     return(
         <React.Fragment>
             <BrowserRouter>
-                {/* <Login/> */}
-                <Template/>
+                <Routes>
+                    <Route path="/*" element={<Login/>}/>
+                    <Route path="/Home/*" element={<Home auth={true}/>}/>
+                    <Route path="/Shop/*" element={<Shop/>}/>
+                </Routes>
             </BrowserRouter>
         </React.Fragment>
     );

@@ -1,9 +1,17 @@
 import '../Template.css';
-import React from 'react';
+import {React, useEffect} from 'react';
 import NavPage from './NavPage'
-import { NavLink } from 'react-router-dom';
+import Add from '../Pages/Add'
+import Manage from '../Pages/Manage'
+import { NavLink, useNavigate } from 'react-router-dom';
 
-export default function Template() {
+export default function Template(props) {
+     const navigate = useNavigate();
+     useEffect(()=>{
+          if(!props.auth){
+               navigate('/Login')
+          }
+     },[])
      return (
           <div className="manage">
                <div className="background">
@@ -14,7 +22,7 @@ export default function Template() {
                </div>
                <div className="profile" id="logout" onClick={logout}>
                               <img className="img-profile" src="https://as1.ftcdn.net/v2/jpg/03/16/12/52/1000_F_316125289_3GTL3Yd9JVQz3Nw50uAEEkOpX6GvK0LE.jpg"></img>
-                               <div className="profile-content">
+                              <div className="profile-content">
                                    <p className="profile-name">Rachanon Montree</p>
                                    <p className="profile-role">Sensei</p>
                               </div>
@@ -26,14 +34,14 @@ export default function Template() {
                     <div className="main-content">
                          <div className="side-bar">
                               <div className="list-menu">
-                                   <NavLink to={"/Manage"}>
+                                   <NavLink to={"./Manage"}>
                                         <div className="list-item" onClick={e=>listMenu(e) } id="Manage"><i className="fa-solid fa-list-check icon" aria-disabled></i><span className="link-text">จัดการเมนู</span></div>
                                    </NavLink>
-                                   <NavLink to={"/Add"}>
+                                   <NavLink to={"./Add"}>
                                         <div className="list-item" onClick={e=>listMenu(e)} id="Add"><i className="fa-solid fa-plus icon iconsF" aria-disabled></i><span className="link-text">เพิ่มเมนู</span></div>
                                    </NavLink>
-                                   <NavLink to={"/#"}>
-                                        <div className="list-item" onClick={e=>listMenu(e)}><i className="fa-solid fa-store icon" aria-disabled></i><span className="link-text">Menu 3</span></div>
+                                   <NavLink to={"/Shop"}>
+                                        <div className="list-item" onClick={e=>listMenu(e)}><i className="fa-solid fa-store icon" aria-disabled></i><span className="link-text">ร้าน</span></div>
                                    </NavLink>
                               </div>
                          </div>
@@ -75,6 +83,4 @@ export default function Template() {
           }
           params.target.classList.add('active-menu')
      }
-     
-
 }

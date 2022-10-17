@@ -1,8 +1,11 @@
 import React from "react";
 import '../Login.css';
+import { useNavigate } from "react-router-dom";
 
 export default function Login(){
     
+     let navigate = useNavigate()
+
      return (
           <div className="login-bg">
                <div className="background">
@@ -31,7 +34,11 @@ export default function Login(){
                          </label>
                          <p className="error">Wrong username or password.</p>
                     </div>
-                    <button className="btn-login">เข้าสู่ระบบ</button>
+                    <button className="btn-login"
+                         onClick={()=>{
+                              navigate('/Home/Manage')
+                         }}
+                    >เข้าสู่ระบบ</button>
                </div>
           </div> 
      );
