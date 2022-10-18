@@ -65,7 +65,7 @@ export default function Login(){
                          <label htmlFor="password" className="inputLogin">
                                    <div id="insertBox">
                                         <span id="icon"><i className="fa-solid fa-unlock-keyhole"></i></span>
-                                        <input id="password" name="password" type="text" placeholder=" Password" autoComplete="off"
+                                        <input id="password" name="password" type="password" placeholder=" Password" autoComplete="off"
                                         onInput={
                                              (e)=>{setPassword(e.target.value)}
                                         }
@@ -74,7 +74,7 @@ export default function Login(){
                          </label>
                          <p className="error" id="err">Wrong username or password.</p>
                     </div>
-                    <button type='submit' className="btn-login"
+                    <button className="btn-login"
                          onClick={()=>{handleSubmit()}}
                     >เข้าสู่ระบบ</button>
                </div>

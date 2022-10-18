@@ -606,3 +606,13 @@ i {
      background: #333;
      border-radius: 5px;
 }
+
+.modal .wrap-input .input-add,
+.modal .wrap-input .select {
+     height: 35px !important;
+     width: 200px !important;
+     border-radius: 5px;
+     outline: none;
+     border: 2px solid #ddd;
+     padding-left: 15px;
+}
