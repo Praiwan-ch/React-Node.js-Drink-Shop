@@ -1,4 +1,4 @@
-import {React, useState, useEffect} from "react";
+import { React, useState, useEffect } from "react";
 import axios from 'axios';
 import '../Template.css';
 import 'bootstrap/dist/css/bootstrap.css'
@@ -30,14 +30,17 @@ export default function Manage() {
               console.error(err)
           })
      }
+
+     // Edit menu detail
      let [menu_id, setMenu_id] = useState('')
      let [menu_name, setMenu_name] =  useState("")
      let [menu_price, setMenu_price] = useState("")
      let [menu_type_id, setMenu_type_id] = useState("1")
      let [menu_image, setMenu_image] = useState("")
 
+     // Check input before update
      const checkInput = ()=>{
-          if(menu_name == '' || menu_price == '' || menu_type_id == '' || menu_image == ''){
+          if(menu_name === '' || menu_price === '' || menu_type_id === '' || menu_image === ''){
                Swal.fire({
                     title: 'ข้อมูลไม่ครบ!',
                     text: 'กรุณาตรวจสอบการกรอกข้อมูล',
@@ -50,29 +53,15 @@ export default function Manage() {
           }
      }
 
+     // File state
      let [file, setFile] = useState()
 
+     // Set state file
      const handleSelectFile = val => {
           setFile(val)
      }
 
-     const handleUpload = () => {
-          const data = new FormData()
-          data.append('file',file)
-          console.log(data);
-          axios.post('/upload',data).then(res => {
-               if(res){
-                    Swal.fire({
-                         title: 'อัพโหลดรูปไม่สำเร็จ!',
-                         text: 'กรุณาลองอีกครั้ง',
-                         icon: 'warning',
-                         confirmButtonText: 'ยกเลิก',
-                         confirmButtonColor: '#B9B9B9',
-                    })
-               }
-          })
-     }
-
+     // Get current image url
      const [image, setImage] = useState()
      const onImageChange = (event) => {
           if (event.target.files && event.target.files[0]) {
@@ -80,12 +69,14 @@ export default function Manage() {
           }
      }
 
+     // Get all type of menu
      const getType = ()=>{
           axios.get('/getType').then((Response)=>{
                setType(Response.data)
           })
      }
 
+     // Set value to update menu
      const handleEdit = (val)=>{
           setMenu_id(val.menu_id)
           setMenu_name(val.menu_name)
@@ -94,6 +85,7 @@ export default function Manage() {
           setMenu_image(val.menu_image)
      }
 
+     // Update menu
      const updateMenu = ()=>{
           axios.post('/updateMenu', {
                menu_id:       menu_id,
@@ -132,6 +124,7 @@ export default function Manage() {
           })
      }
 
+     // Check before update new image
      const updateImage = ()=>{
           if(file != ''){
                uploadImage()
@@ -146,6 +139,7 @@ export default function Manage() {
           }
      }
 
+     // Upload new image
      const uploadImage = ()=>{
           let data = new FormData()
           data.append('file',file)

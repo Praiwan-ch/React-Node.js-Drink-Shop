@@ -298,6 +298,10 @@ table tr .amount{
   width: 50px;
 }
 
+.table-row {
+  min-width: 400px !important;
+}
+
 table tr .name{
   text-align: left;
   width: 220px;

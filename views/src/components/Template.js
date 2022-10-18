@@ -1,5 +1,5 @@
 import '../Template.css';
-import {React, useEffect, useState} from 'react';
+import { React, useEffect, useState } from 'react';
 import NavPage from './NavPage'
 import { NavLink, useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -10,18 +10,9 @@ export default function Template() {
      axios.defaults.baseURL = 'http://localhost:4000';
 
      const navigate = useNavigate();
+
      const [user, setUser] = useState('')
-
-     const auth = ()=>{
-          axios.get('/auth').then((res)=>{
-               if(res.data){
-                    setUser(res.data)
-               }else{
-                    navigate('/Login') 
-               }
-          })
-     }
-
+     
      const clearAuth = ()=>{
           let confirm = 0
           Swal.fire({
@@ -55,6 +46,16 @@ export default function Template() {
      }
 
      useEffect(()=>{
+          const auth = ()=>{
+               axios.get('/auth').then((res)=>{
+                    if(res.data){
+                         setUser(res.data)
+                    }else{
+                         navigate('/Login') 
+                    }
+               })
+          }
+
           auth()
      },[])
      
@@ -67,7 +68,7 @@ export default function Template() {
                     <div className="shape shape4"></div>
                </div>
                <div className="profile" id="logout" onClick={logout}>
-                              <img className="img-profile" src="https://as1.ftcdn.net/v2/jpg/03/16/12/52/1000_F_316125289_3GTL3Yd9JVQz3Nw50uAEEkOpX6GvK0LE.jpg"></img>
+                              <img className="img-profile" src="https://as1.ftcdn.net/v2/jpg/03/16/12/52/1000_F_316125289_3GTL3Yd9JVQz3Nw50uAEEkOpX6GvK0LE.jpg" alt=''/>
                               <div className="profile-content">
                                    <p className="profile-name">{user}</p>
                                    <p className="profile-role">Sensei</p>
@@ -120,7 +121,7 @@ export default function Template() {
           let logout = document.getElementById('modal-logout')
           window.addEventListener('click', (event)=>{
                let e = event.target.classList[0]
-               if(!(e == 'profile' || e == 'profile-name' || e == 'profile-role' || e == 'img-profile' || e == 'logout')){
+               if(!(e === 'profile' || e === 'profile-name' || e === 'profile-role' || e === 'img-profile' || e === 'logout')){
                     logout.classList.remove('active-logout')
                }
           })

@@ -65,7 +65,7 @@ export default function Manage() {
      }
 
      const checkInput = ()=>{
-          if(menu_name == '' || menu_price == '' || menu_type_id == '' || menu_image == ''){
+          if(menu_name === '' || menu_price === '' || menu_type_id === '' || menu_image === ''){
                Swal.fire({
                     title: 'ข้อมูลไม่ครบ!',
                     text: 'กรุณาตรวจสอบการกรอกข้อมูล',

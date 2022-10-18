@@ -1,10 +1,9 @@
-import {React, useState, useEffect } from "react";
+import { React, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2'
 import axios from 'axios';
-import $ from 'jquery';
+import $ from 'jquery'
 import '../Login.css';
-
 
 export default function Login(){
     
@@ -48,39 +47,38 @@ export default function Login(){
                     <div className="shape shape4"></div>
                </div>
                <div className="login">
-                    <img src="/Login.webp" className="img"></img>
+                    <img src="/Login.webp" className="img" alt=""></img>
                     <h2>Login</h2>
                     <div className="form">
                          <label htmlFor="username">Username</label>
                          <label htmlFor="username" className="inputLogin">
-                                <div id="insertBox">
-                                    <a id="icon"><i className="fa-solid fa-circle-user"></i></a>
-                                    <input id="username" name="username" type="text" placeholder=" Username" autoComplete="off"
+                                   <div id="insertBox">
+                                        <span id="icon"><i className="fa-solid fa-circle-user"></i></span>
+                                        <input id="username" name="username" type="text" placeholder=" Username" autoComplete="off"
                                         onInput={
                                              (e)=>{setUsername(e.target.value)}
                                         }
-                                    ></input>
-                                </div>
+                                        ></input>
+                                   </div>
                          </label>
                          <label htmlFor="password" className="label">Password</label>
                          <label htmlFor="password" className="inputLogin">
-                                <div id="insertBox">
-                                    <a id="icon"><i className="fa-solid fa-unlock-keyhole"></i></a>
-                                    <input id="password" name="password" type="text" placeholder=" Password" autoComplete="off"
+                                   <div id="insertBox">
+                                        <span id="icon"><i className="fa-solid fa-unlock-keyhole"></i></span>
+                                        <input id="password" name="password" type="text" placeholder=" Password" autoComplete="off"
                                         onInput={
                                              (e)=>{setPassword(e.target.value)}
                                         }
-                                    ></input>
-                                </div>
+                                        ></input>
+                                   </div>
                          </label>
                          <p className="error" id="err">Wrong username or password.</p>
                     </div>
-                    <button className="btn-login"
-                         onClick={()=>{
-                              handleSubmit()
-                         }}
+                    <button type='submit' className="btn-login"
+                         onClick={()=>{handleSubmit()}}
                     >เข้าสู่ระบบ</button>
                </div>
           </div> 
      );
+
 }
