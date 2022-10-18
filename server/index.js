@@ -188,6 +188,18 @@ app.post('/updateMenu', (req, res) => {
     );
 });
 
+// Delete menu
+app.post('/deleteMenu',(req,res) =>{
+    const menu_id = req.body.menu_id
+    db.query(`DELETE FROM menu WHERE menu_id = '${menu_id}'`, (err, result) => {
+        if(err){    
+            console.log(err);
+        }else{
+            res.send(result);
+        }
+    });
+});
+
 // Update image
 app.post('/updateImage', upload.single('file'),(req, res) => {
     const { filename: image } = req.file;

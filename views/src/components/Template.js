@@ -14,36 +14,14 @@ export default function Template() {
      const [user, setUser] = useState('')
      
      const clearAuth = ()=>{
-          let confirm = 0
-          Swal.fire({
-               title: 'Are you sure?',
-               icon: 'warning',
-               showCancelButton: true,
-               confirmButtonColor: '#FF0000bb',
-               cancelButtonColor: '#B9B9B9',
-               confirmButtonText: 'Logout'
-             }).then((result) => {
-               if (result.isConfirmed) {
-                    confirm = 1
+        
+          axios.get('/logout').then((res)=>{
+               if(res.data){
+                     navigate('/Login') 
                }
-          }).then(()=>{
-               if(confirm){
-                    axios.get('/logout').then((res)=>{
-                         if(res.data){
-                              navigate('/Login') 
-                         }else{
-                              Swal.fire({
-                                   title: 'Logout failed',
-                                   text: 'กรุณาลองอีกครั้ง',
-                                   icon: 'error',
-                                   confirmButtonText: 'ตกลง',
-                                   confirmButtonColor: '#B9B9B9',
-                              })
-                         }
-                    })
-               }
-          })
+          }) 
      }
+     
 
      useEffect(()=>{
           const auth = ()=>{

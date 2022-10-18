@@ -85,6 +85,41 @@ export default function Manage() {
           setMenu_image(val.menu_image)
      }
 
+     // Delete menu
+     const deleteMenu = (val) => {
+          Swal.fire({
+			icon: 'warning',
+			title: 'คุณแน่ใจว่าจะลบเมนูที่เลือก ?',
+			confirmButtonText: 'ตกลง',
+			confirmButtonColor: 'red',
+               showCancelButton: true,
+               cancelButtonText: 'ยกเลิก',
+               reverseButtons: true
+		}).then((result) => {
+			if (result.isConfirmed) {
+                    const data = { menu_id: val }
+                    Swal.fire({
+                         icon: 'success',
+                         title: 'ลบเมนูสำเร็จ',
+                         confirmButtonText: 'ตกลง',
+                         confirmButtonColor: '#71DC88'
+                    }).then((result) => {
+                         if (result.isConfirmed) {
+                              axios.post('/deleteMenu', data).then((res) => {
+                                 setMenu(res.data)
+                              })
+                              .catch(err => {
+                                console.error(err);
+                              });   
+                              window.location.reload(false);
+                         }
+                    })
+                    
+			}
+		})
+          
+     }
+
      // Update menu
      const updateMenu = ()=>{
           axios.post('/updateMenu', {
@@ -213,7 +248,9 @@ export default function Manage() {
                                                        >
                                                             <i className="fa-solid fa-pen-to-square"></i>
                                                        </div>
-                                                       <div className="btn-delete">
+                                                       <div className="btn-delete" onClick={()=>{
+                                                                 deleteMenu(val.menu_id)
+                                                            }}>
                                                             <i className="fa-solid fa-trash-can"></i>
                                                        </div>
                                                   </td>

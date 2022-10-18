@@ -95,20 +95,7 @@ export default function Shop(){
     }
 
     const handleCancel = ()=>{
-        let confirm = 0
-        Swal.fire({
-            title: 'Are you sure?',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#FF0000bb',
-            cancelButtonColor: '#B9B9B9',
-            confirmButtonText: 'Confirm'
-          }).then((result) => {
-            if (result.isConfirmed) {
-                 confirm = 1
-            }
-        }).then(()=>{
-            if(confirm){
+       
                 index = 0   
                 order = []
                 $('#tag-subtotal').text(0)
@@ -119,8 +106,7 @@ export default function Shop(){
                         <td width="300px">--- Empty ---</td>
                     </tr>`
                 )
-            }
-        })
+           
         
     }
 
