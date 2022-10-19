@@ -81,7 +81,7 @@ export default function Shop(){
         $('#tbody').empty()
         let total = 0
         for(let i=0; i<order.length; i++){
-            total = parseInt(total) + (parseInt(order[i].menu_amount)*parseInt(order[i].menu_price))
+            total = parseFloat(total) + (parseFloat(order[i].menu_amount)*parseFloat(order[i].menu_price))
             $('#tbody').append(
                 `<tr class='table-row'>
                     <td class='amount'>x${order[i].menu_amount}</td>
@@ -109,7 +109,6 @@ export default function Shop(){
 
     // Send Order to db
     const handleOrdering = ()=>{
-        console.log(order.length);
         if(order.length){
             axios.post('/addReceipt/', order).then((res) => {
                 if(res.data){
