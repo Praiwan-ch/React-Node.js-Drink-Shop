@@ -216,7 +216,6 @@ app.post('/updateImage', upload.single('file'),(req, res) => {
 });
 
 app.post('/addReceipt', (req, res)=>{
-    var lastID = 0
     db.query(`INSERT INTO receipt SET rcp_date = current_timestamp()`)
     db.query('SELECT rcp_id FROM receipt WHERE rcp_id = (SELECT MAX(rcp_id) FROM receipt)', (err, result) => {
         if(!err){
