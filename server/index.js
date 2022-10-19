@@ -109,7 +109,7 @@ app.get('/getMenu/Frappe', (req, res) => {
 // Get menu by search
 app.post('/getMenu/Search', (req, res) => {
     let data = req.body.search
-    db.query(`SELECT * FROM menu JOIN menu_type ON menu.menu_type_id = menu_type.menu_type_id WHERE menu_name LIKE '%${data}%' ORDER BY menu_id`, 
+    db.query(`SELECT * FROM menu JOIN menu_type ON menu.menu_type_id = menu_type.menu_type_id WHERE menu_name LIKE '%${data}%' OR menu_type_name LIKE '%${data}%' ORDER BY menu_id`, 
         (err, result) => {
             if(err){    
                 console.log(err);
@@ -214,6 +214,20 @@ app.post('/updateImage', upload.single('file'),(req, res) => {
         }
     )
 });
+
+app.post('/addReceipt', (req, res)=>{
+    var lastID = 0
+    db.query(`INSERT INTO receipt SET rcp_date = current_timestamp()`)
+    db.query('SELECT rcp_id FROM receipt WHERE rcp_id = (SELECT MAX(rcp_id) FROM receipt)', (err, result) => {
+        if(!err){
+            for(let i=0; i<req.body.length; i++)
+            db.query(`INSERT INTO receipt_detail VALUE ('${result[0].rcp_id}', '${req.body[i].menu_id}', '${req.body[i].menu_amount}', '${req.body[i].menu_amount * req.body[i].menu_price}')`)
+            res.send(true)
+        }else{
+            res.send(false)
+        }
+    })
+})
 
 app.listen(process.env.PORT, () => {
     console.log(`Server is running on port ${process.env.PORT}`);

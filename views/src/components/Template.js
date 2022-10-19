@@ -36,7 +36,10 @@ export default function Template() {
 
           auth()
      },[])
-     
+
+     const activeLink = 'item-list active-menu'
+     const normalLink = 'item-list'
+
      return (
           <div className="manage">
                <div className="background">
@@ -59,14 +62,14 @@ export default function Template() {
                     <div className="main-content">
                          <div className="side-bar">
                               <div className="list-menu">
-                                   <NavLink to={"./Manage"}>
-                                        <div className="list-item" onClick={e=>listMenu(e) } id="Manage"><i className="fa-solid fa-list-check icon" aria-disabled></i><span className="link-text">จัดการเมนู</span></div>
+                                   <NavLink to={"./Manage"} className={({ isActive }) => isActive ? activeLink: normalLink}>
+                                        <i className="fa-solid fa-list-check icon" aria-disabled></i><span className="link-text">จัดการเมนู</span>
                                    </NavLink>
-                                   <NavLink to={"./Add"}>
-                                        <div className="list-item" onClick={e=>listMenu(e)} id="Add"><i className="fa-solid fa-plus icon iconsF" aria-disabled></i><span className="link-text">เพิ่มเมนู</span></div>
+                                   <NavLink to={"./Add"} className={({ isActive }) => isActive ? activeLink: normalLink}>
+                                        <i className="fa-solid fa-plus icon iconsF" aria-disabled></i><span className="link-text">เพิ่มเมนู</span>
                                    </NavLink>
-                                   <NavLink to={"/Shop"}>
-                                        <div className="list-item" onClick={e=>listMenu(e)}><i className="fa-solid fa-store icon" aria-disabled></i><span className="link-text">ร้าน</span></div>
+                                   <NavLink to={"/Shop"} className={({ isActive }) => isActive ? activeLink: normalLink}>
+                                       <i className="fa-solid fa-store icon" aria-disabled></i><span className="link-text">ร้าน</span>
                                    </NavLink>
                               </div>
                          </div>
@@ -77,13 +80,11 @@ export default function Template() {
                          {/*----- Main content -----*/}
                     </div>
                     <div className="logout" id="modal-logout">
-                         {/* <NavLink to={"/Login"}> */}
-                              <div className="logout-btn" 
-                                   onClick={()=>{
-                                        clearAuth()
-                                   }}
-                              ><i className="fa-solid fa-right-from-bracket icon"></i>Logout</div>
-                         {/* </NavLink> */}
+                         <div className="logout-btn" 
+                              onClick={()=>{
+                                   clearAuth()
+                              }}
+                         ><i className="fa-solid fa-right-from-bracket icon"></i>Logout</div>
                     </div>
                </div>
           </div>

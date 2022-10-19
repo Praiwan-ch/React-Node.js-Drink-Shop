@@ -95,19 +95,40 @@ export default function Shop(){
     }
 
     const handleCancel = ()=>{
-       
-                index = 0   
-                order = []
-                $('#tag-subtotal').text(0)
-                $('#tag-total').text(0)
-                $('#tbody').empty()
-                $('#tbody').append(
-                    `<tr class='table-row'>
-                        <td width="300px">--- Empty ---</td>
-                    </tr>`
-                )
-           
-        
+        index = 0   
+        order = []
+        $('#tag-subtotal').text(0)
+        $('#tag-total').text(0)
+        $('#tbody').empty()
+        $('#tbody').append(
+            `<tr class='table-row'>
+                <td width="300px">--- Empty ---</td>
+            </tr>`
+        )
+    }
+
+    // Send Order to db
+    const handleOrdering = ()=>{
+        axios.post('/addReceipt/', order).then((res) => {
+            if(res.data){
+                Swal.fire({
+                    title: 'เพิ่มรายการสำเร็จ',
+                    icon: 'success',
+                    confirmButtonText: 'ตกลง',
+                    confirmButtonColor: '#71DC88',
+               }).then(()=>{
+                    handleCancel()
+               })
+            }else{
+                Swal.fire({
+                    title: 'เพิ่มรายการไม่สำเร็จ!',
+                    text: 'กรุณาลองอีกครั้ง',
+                    icon: 'warning',
+                    confirmButtonText: 'ยกเลิก',
+                    confirmButtonColor: '#B9B9B9',
+               })
+            }
+        })
     }
 
     useEffect(() => {
@@ -203,7 +224,7 @@ export default function Shop(){
                 </div>
                 <div className='footer button'>
                     <button className='order' onClick={()=>{handleCancel()}}>CANCEL</button>
-                    <button className='order' >ORDERING</button>
+                    <button className='order' onClick={()=>{handleOrdering()}}>ORDERING</button>
                 </div>
             </div>
         </div>

@@ -154,6 +154,8 @@ export default function Manage() {
                          icon: 'success',
                          confirmButtonText: 'ตกลง',
                          confirmButtonColor: '#71DC88',
+                    }).then(()=>{
+                         window.location.reload()
                     }) 
                }
           })
@@ -198,70 +200,67 @@ export default function Manage() {
 
      return(
           <div>
-               <div>
-                    <p className="title-content">จัดการเมนู</p>
-                    <label htmlFor="search-menu" className="label-search">
-                         <div className="search-menu">
-                              <label htmlFor="search-menu">
-                                   <i className="fa-solid fa-magnifying-glass"></i>
-                              </label>
-                              <input type="text" id="search-menu" placeholder=" Search..."
-                                   onInput={(event)=>{
-                                        searchMenu(event.target.value)
-                                   }}
-                              ></input>
-                         </div>
-                    </label>
+               <p className="title-content">จัดการเมนู</p>
+               <label htmlFor="search-menu" className="label-search">
+                    <div className="search-menu">
+                         <label htmlFor="search-menu">
+                              <i className="fa-solid fa-magnifying-glass"></i>
+                         </label>
+                         <input type="text" id="search-menu" placeholder=" Search..."
+                              onInput={(event)=>{
+                                   searchMenu(event.target.value)
+                              }}
+                         ></input>
+                    </div>
+               </label>
 
-                    <table className="table">
-                         <thead>
-                              <tr>
-                                   <th>ลำดับ</th>
-                                   <th>ชื่อสินค้า</th>
-                                   <th>ประเภท</th>
-                                   <th>ราคา</th>
-                                   <th>ภาพสินค้า</th>
-                                   <th>ตัวดำเนินการ</th>
-                              </tr>
-                         </thead>
-                         <tbody>
-                              {
-                                   menu.map((val, index)=>{
-                                        return (
-                                             <tr key={val.menu_id.toString()}>
-                                                  <td>{index+1}</td>
-                                                  <td>{val.menu_name}</td>
-                                                  <td>{val.menu_type_name}</td>
-                                                  <td>{val.menu_price}</td>
-                                                  <td>
-                                                       <div className="table-img">
-                                                            <img src={'../../image/'+val.menu_image}></img>
-                                                       </div>
-                                                  </td>
-                                                  <td>
-                                                       <div className="btn-edit" data-bs-toggle="modal" data-bs-target="#exampleModal"
-                                                            onClick={()=>{
-                                                                 // App(val.menu_id)
-                                                                 handleEdit(val)
-                                                                 edit()
-                                                            }}
-                                                       >
-                                                            <i className="fa-solid fa-pen-to-square"></i>
-                                                       </div>
-                                                       <div className="btn-delete" onClick={()=>{
-                                                                 deleteMenu(val.menu_id)
-                                                            }}>
-                                                            <i className="fa-solid fa-trash-can"></i>
-                                                       </div>
-                                                  </td>
-                                             </tr>
-                                        )
-                                   })
-                              }
-                         </tbody>
-                    </table>
-               </div>
-               <div className="modal modal-lg fade" id="exampleModal" tabIndex="99" aria-hidden="true" data-bs-focus="true" data-bs-backdrop="false">
+               <table className="table">
+                    <thead>
+                         <tr>
+                              <th>ลำดับ</th>
+                              <th>ชื่อสินค้า</th>
+                              <th>ประเภท</th>
+                              <th>ราคา</th>
+                              <th>ภาพสินค้า</th>
+                              <th>ตัวดำเนินการ</th>
+                         </tr>
+                    </thead>
+                    <tbody>
+                         {
+                              menu.map((val, index)=>{
+                                   return (
+                                        <tr key={val.menu_id.toString()}>
+                                             <td>{index+1}</td>
+                                             <td>{val.menu_name}</td>
+                                             <td>{val.menu_type_name}</td>
+                                             <td>{val.menu_price}</td>
+                                             <td>
+                                                  <div className="table-img">
+                                                       <img src={'../../image/'+val.menu_image}></img>
+                                                  </div>
+                                             </td>
+                                             <td>
+                                                  <div className="btn-edit" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                                       onClick={()=>{
+                                                            handleEdit(val)
+                                                            edit()
+                                                       }}
+                                                  >
+                                                       <i className="fa-solid fa-pen-to-square"></i>
+                                                  </div>
+                                                  <div className="btn-delete" onClick={()=>{
+                                                            deleteMenu(val.menu_id)
+                                                       }}>
+                                                       <i className="fa-solid fa-trash-can"></i>
+                                                  </div>
+                                             </td>
+                                        </tr>
+                                   )
+                              })
+                         }
+                    </tbody>
+               </table>
+               <div className="modal modal-lg fade" id="exampleModal" tabIndex="99" aria-hidden="true" data-bs-focus="true" data-bs-backdrop="true">
                     <div className="modal-dialog">
                          <div className="modal-content">
                               <div className="modal-header">
@@ -357,6 +356,10 @@ export default function Manage() {
                </div>
           </div>
      );
+
+     function setModal() {
+          $('#display-content').css("overflow-y", "hidden")
+     }
 
      function edit() {
           $('#image-edit').css("display", "block")
