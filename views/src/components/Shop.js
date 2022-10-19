@@ -53,7 +53,7 @@ export default function Shop(){
     }
     
     // Set state order
-    let order = [{}]
+    let order = []
 
     var index = 0
     const handleOrder = (val)=>{
@@ -109,26 +109,29 @@ export default function Shop(){
 
     // Send Order to db
     const handleOrdering = ()=>{
-        axios.post('/addReceipt/', order).then((res) => {
-            if(res.data){
-                Swal.fire({
-                    title: 'เพิ่มรายการสำเร็จ',
-                    icon: 'success',
-                    confirmButtonText: 'ตกลง',
-                    confirmButtonColor: '#71DC88',
-               }).then(()=>{
-                    handleCancel()
-               })
-            }else{
-                Swal.fire({
-                    title: 'เพิ่มรายการไม่สำเร็จ!',
-                    text: 'กรุณาลองอีกครั้ง',
-                    icon: 'warning',
-                    confirmButtonText: 'ยกเลิก',
-                    confirmButtonColor: '#B9B9B9',
-               })
-            }
-        })
+        console.log(order.length);
+        if(order.length){
+            axios.post('/addReceipt/', order).then((res) => {
+                if(res.data){
+                    Swal.fire({
+                        title: 'เพิ่มรายการสำเร็จ',
+                        icon: 'success',
+                        confirmButtonText: 'ตกลง',
+                        confirmButtonColor: '#71DC88',
+                    }).then(()=>{
+                        handleCancel()
+                    })
+                }else{
+                    Swal.fire({
+                        title: 'เพิ่มรายการไม่สำเร็จ!',
+                        text: 'กรุณาลองอีกครั้ง',
+                        icon: 'warning',
+                        confirmButtonText: 'ยกเลิก',
+                        confirmButtonColor: '#B9B9B9',
+                   })
+                }
+            })
+        }
     }
 
     useEffect(() => {
