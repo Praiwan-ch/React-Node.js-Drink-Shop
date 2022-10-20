@@ -1,6 +1,7 @@
 CREATE DATABASE  IF NOT EXISTS `drink_shop` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `drink_shop`;
--- MySQL dump 10.13  Distrib 8.0.30, for Win64 (x86_64)
+
+-- MySQL dump 10.13  Distrib 8.0.29, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: drink_shop
 -- ------------------------------------------------------
@@ -30,10 +31,11 @@ CREATE TABLE `menu` (
   `menu_price` double NOT NULL,
   `menu_type_id` int NOT NULL,
   `menu_image` varchar(45) NOT NULL,
+  `menu_display` int NOT NULL,
   PRIMARY KEY (`menu_id`),
   KEY `menu_type_id_idx` (`menu_type_id`),
   CONSTRAINT `menu_type_id` FOREIGN KEY (`menu_type_id`) REFERENCES `menu_type` (`menu_type_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,7 +44,7 @@ CREATE TABLE `menu` (
 
 LOCK TABLES `menu` WRITE;
 /*!40000 ALTER TABLE `menu` DISABLE KEYS */;
-INSERT INTO `menu` VALUES (1,'Americano',35,1,'Hot_Americano.png'),(2,'Americano',55,2,'Iced_Americano.png'),(3,'Americano',60,3,'FRAPPE_Americano.png'),(4,'Mocha',50,1,'hot_mocha.jpg'),(5,'Mocha',65,2,'iced_mocha.jpg'),(6,'Mocha',70,3,'Mocha_Frap.jpg'),(7,'Latte Macchiato',50,1,'hot_latte.png'),(8,'Latte Macchiato',70,2,'iced_latte.png'),(9,'Latte Macchiato',80,3,'freppe_latte.png'),(10,'Tea',40,1,'Tea.png'),(11,'Green Tea',50,2,'Green_Tea.png'),(12,'Thai Tea',50,2,'Thai_Tea.png'),(13,'Chocolate',45,1,'hot_Chocolate.png'),(14,'Chocolate',50,2,'iced_Chocolate.png'),(15,'Chocolate',55,3,'Frappe_Chocolate.png'),(16,'Fresh Milk',35,1,'hot_milk.png'),(17,'Fresh Milk',45,2,'iced_milk.png'),(18,'Fresh Milk',50,3,'frappe_milk.png');
+INSERT INTO `menu` VALUES (1,'Americano',35,1,'Hot_Americano.png',0),(2,'Americano',55,2,'Iced_Americano.png',0),(3,'Americano',60,3,'FRAPPE_Americano.png',0),(4,'Mocha',50,1,'hot_mocha.jpg',0),(5,'Mocha',65,2,'iced_mocha.jpg',0),(6,'Mocha',70,3,'Mocha_Frap.jpg',0),(7,'Latte Macchiato',50,1,'hot_latte.png',0),(8,'Latte Macchiato',70,2,'iced_latte.png',0),(9,'Latte Macchiato',80,3,'freppe_latte.png',0),(10,'Tea',40,1,'Tea.png',0),(11,'Green Tea',50,2,'Green_Tea.png',0),(12,'Thai Tea',50,2,'Thai_Tea.png',0),(13,'Chocolate',45,1,'hot_Chocolate.png',0),(14,'Chocolate',50,2,'iced_Chocolate.png',0),(15,'Chocolate',55,3,'Frappe_Chocolate.png',0),(16,'Fresh Milk',35,1,'hot_milk.png',0),(17,'Fresh Milk',45,2,'iced_milk.png',0),(18,'Fresh Milk',50,3,'frappe_milk.png',0),(20,'test',10,2,'file-1666246792852.jpg',0),(21,'test2',20.5,1,'file-1666247006901.jpg',1);
 /*!40000 ALTER TABLE `menu` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -81,7 +83,7 @@ CREATE TABLE `receipt` (
   `rcp_id` int NOT NULL AUTO_INCREMENT,
   `rcp_date` timestamp NOT NULL,
   PRIMARY KEY (`rcp_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -90,7 +92,7 @@ CREATE TABLE `receipt` (
 
 LOCK TABLES `receipt` WRITE;
 /*!40000 ALTER TABLE `receipt` DISABLE KEYS */;
-INSERT INTO `receipt` VALUES (2,'2022-10-19 11:11:03'),(3,'2022-10-19 11:11:48'),(4,'2022-10-19 11:18:33'),(5,'2022-10-19 11:21:39'),(6,'2022-10-19 11:40:24'),(7,'2022-10-19 11:40:48'),(8,'2022-10-19 11:41:53'),(9,'2022-10-19 11:42:41'),(10,'2022-10-19 11:43:05'),(11,'2022-10-19 11:46:57'),(12,'2022-10-19 11:47:47'),(13,'2022-10-19 11:48:25'),(14,'2022-10-19 11:49:01'),(15,'2022-10-19 11:50:13'),(16,'2022-10-19 11:50:13'),(17,'2022-10-19 11:53:53'),(18,'2022-10-19 11:54:43'),(19,'2022-10-19 11:55:30'),(20,'2022-10-19 11:57:42'),(21,'2022-10-19 11:58:05'),(22,'2022-10-19 11:58:11'),(23,'2022-10-19 11:59:02'),(24,'2022-10-19 11:59:22'),(25,'2022-10-19 11:59:26'),(26,'2022-10-19 11:59:49'),(27,'2022-10-19 12:00:05'),(28,'2022-10-19 12:00:08'),(29,'2022-10-19 12:01:52');
+INSERT INTO `receipt` VALUES (2,'2022-10-19 11:11:03'),(3,'2022-10-19 11:11:48'),(4,'2022-10-19 11:18:33'),(5,'2022-10-19 11:21:39'),(6,'2022-10-19 11:40:24'),(7,'2022-10-19 11:40:48'),(8,'2022-10-19 11:41:53'),(9,'2022-10-19 11:42:41'),(10,'2022-10-19 11:43:05'),(11,'2022-10-19 11:46:57'),(12,'2022-10-19 11:47:47'),(13,'2022-10-19 11:48:25'),(14,'2022-10-19 11:49:01'),(15,'2022-10-19 11:50:13'),(16,'2022-10-19 11:50:13'),(17,'2022-10-19 11:53:53'),(18,'2022-10-19 11:54:43'),(19,'2022-10-19 11:55:30'),(20,'2022-10-19 11:57:42'),(21,'2022-10-19 11:58:05'),(22,'2022-10-19 11:58:11'),(23,'2022-10-19 11:59:02'),(24,'2022-10-19 11:59:22'),(25,'2022-10-19 11:59:26'),(26,'2022-10-19 11:59:49'),(27,'2022-10-19 12:00:05'),(28,'2022-10-19 12:00:08'),(29,'2022-10-19 12:01:52'),(30,'2022-10-19 14:31:34'),(31,'2022-10-20 06:59:08');
 /*!40000 ALTER TABLE `receipt` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -119,7 +121,7 @@ CREATE TABLE `receipt_detail` (
 
 LOCK TABLES `receipt_detail` WRITE;
 /*!40000 ALTER TABLE `receipt_detail` DISABLE KEYS */;
-INSERT INTO `receipt_detail` VALUES (13,1,1,35),(13,2,1,55),(13,3,1,60),(14,5,3,195),(15,1,1,35),(15,2,1,55),(15,3,1,60),(16,5,3,195),(17,5,1,65),(17,4,1,50),(18,5,1,65),(18,4,1,50),(19,5,1,65),(20,18,1,50),(21,18,1,50),(22,11,1,50),(23,5,1,65),(24,5,1,65),(25,3,1,60),(29,5,1,65),(29,10,1,40);
+INSERT INTO `receipt_detail` VALUES (13,1,1,35),(13,2,1,55),(13,3,1,60),(14,5,3,195),(15,1,1,35),(15,2,1,55),(15,3,1,60),(16,5,3,195),(17,5,1,65),(17,4,1,50),(18,5,1,65),(18,4,1,50),(19,5,1,65),(20,18,1,50),(21,18,1,50),(22,11,1,50),(23,5,1,65),(24,5,1,65),(25,3,1,60),(29,5,1,65),(29,10,1,40),(30,5,1,65),(30,4,1,50),(30,10,1,40),(30,9,2,160),(31,4,1,50),(31,3,1,60),(31,7,1,50);
 /*!40000 ALTER TABLE `receipt_detail` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -159,4 +161,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-10-19 19:41:18
+-- Dump completed on 2022-10-20 21:20:01
