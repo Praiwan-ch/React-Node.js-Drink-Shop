@@ -2,7 +2,6 @@ import { React, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2'
 import axios from 'axios';
-import $ from 'jquery'
 import '../Login.css';
 
 export default function Login(){

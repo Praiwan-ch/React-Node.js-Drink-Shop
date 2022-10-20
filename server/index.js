@@ -20,6 +20,11 @@ const db = mysql.createConnection({
 
 let auth  = '' 
 
+// Status Check
+app.get('/status', (req, res)=>{
+    res.status(400)
+})
+
 // Login
 app.post('/login', (req, res)=>{
     db.query(`SELECT * FROM user WHERE usr_username = '${req.body.username}' AND usr_password = '${req.body.password}'`, (err, result) => {

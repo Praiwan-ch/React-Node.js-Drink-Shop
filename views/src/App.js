@@ -1,5 +1,5 @@
 import './Template.css';
-import React from "react";
+import  React  from "react";
 import Home from './components/Template';
 import Login from './components/Login';
 import Shop from './components/Shop';
