@@ -74,10 +74,14 @@ export default function Shop(){
                 menu_amount: parseInt(order[indexOrder].menu_amount) + 1
             }
         }
-        bill()
+        bill(val)
     }
 
-    const bill = ()=>{
+    function test(){
+        console.log("object");
+    }
+
+    const bill = (val)=>{
         $('#tbody').empty()
         let total = 0
         for(let i=0; i<order.length; i++){
@@ -90,14 +94,14 @@ export default function Shop(){
                 </tr>`
             )
         }
-        $('#tag-subtotal').text(total)
+        // $('#tag-subtotal').text(total)
         $('#tag-total').text(total)
     }
 
     const handleCancel = ()=>{
         index = 0   
         order = []
-        $('#tag-subtotal').text(0)
+        // $('#tag-subtotal').text(0)
         $('#tag-total').text(0)
         $('#tbody').empty()
         $('#tbody').append(
@@ -216,10 +220,10 @@ export default function Shop(){
                 </div>
 
                 <hr size='2'></hr>
-                <div className='footer'>
+                {/* <div className='footer'>
                     <div className='tag'>SUBTOTAL</div>
                     <div className='total'><span id="tag-subtotal">0</span> ฿</div>
-                </div>
+                </div> */}
                 <div className='footer'>
                     <div className='tag'>TOTAL</div>
                     <div className='total'><span id="tag-total">0</span> ฿</div>

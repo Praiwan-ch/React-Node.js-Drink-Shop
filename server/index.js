@@ -53,7 +53,7 @@ app.get('/logout', (req, res)=>{
 
 // Get all menu
 app.get('/getMenu/All', (req, res) => {
-    db.query("SELECT * FROM menu JOIN menu_type ON menu.menu_type_id = menu_type.menu_type_id ORDER BY menu_id", (err, result) => {
+    db.query("SELECT * FROM menu JOIN menu_type ON menu.menu_type_id = menu_type.menu_type_id WHERE menu_display = 0 ORDER BY menu_id", (err, result) => {
         if(err){
             console.log(err);
         }else{
@@ -75,7 +75,7 @@ app.get('/getType', (req, res) => {
 
 // Get menu hot
 app.get('/getMenu/Hot', (req, res) => {
-    db.query("SELECT * FROM menu WHERE menu_type_id = 1", (err, result) => {
+    db.query("SELECT * FROM menu WHERE menu_type_id = 1 and menu_display = 0", (err, result) => {
         if(err){
             console.log(err);
         }else{
@@ -86,7 +86,7 @@ app.get('/getMenu/Hot', (req, res) => {
 
 // Get menu iced
 app.get('/getMenu/Iced', (req, res) => {
-    db.query("SELECT * FROM menu WHERE menu_type_id = 2", (err, result) => {
+    db.query("SELECT * FROM menu WHERE menu_type_id = 2 and menu_display = 0", (err, result) => {
         if(err){
             console.log(err);
         }else{
@@ -97,7 +97,7 @@ app.get('/getMenu/Iced', (req, res) => {
 
 // Get menu frappe
 app.get('/getMenu/Frappe', (req, res) => {
-    db.query("SELECT * FROM menu WHERE menu_type_id = 3", (err, result) => {
+    db.query("SELECT * FROM menu WHERE menu_type_id = 3 and menu_display = 0", (err, result) => {
         if(err){
             console.log(err);
         }else{
@@ -109,7 +109,7 @@ app.get('/getMenu/Frappe', (req, res) => {
 // Get menu by search
 app.post('/getMenu/Search', (req, res) => {
     let data = req.body.search
-    db.query(`SELECT * FROM menu JOIN menu_type ON menu.menu_type_id = menu_type.menu_type_id WHERE menu_name LIKE '%${data}%' OR menu_type_name LIKE '%${data}%' ORDER BY menu_id`, 
+    db.query(`SELECT * FROM menu JOIN menu_type ON menu.menu_type_id = menu_type.menu_type_id WHERE menu_name LIKE '%${data}%' OR menu_type_name LIKE '%${data}%' and menu_display = 0 ORDER BY menu_id`, 
         (err, result) => {
             if(err){    
                 console.log(err);
@@ -191,7 +191,7 @@ app.post('/updateMenu', (req, res) => {
 // Delete menu
 app.post('/deleteMenu',(req,res) =>{
     const menu_id = req.body.menu_id
-    db.query(`DELETE FROM menu WHERE menu_id = '${menu_id}'`, (err, result) => {
+    db.query(`UPDATE menu SET menu_display = 1 WHERE menu_id = '${menu_id}'`, (err, result) => {
         if(err){    
             console.log(err);
         }else{

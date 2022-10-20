@@ -51,7 +51,11 @@ export default function Manage() {
                          icon: 'success',
                          confirmButtonText: 'ตกลง',
                          confirmButtonColor: '#71DC88',
-                    })  
+                    }).then((result)=>{
+                         if(result.isConfirmed){
+                              window.location.reload()
+                         }
+                    }) 
                }else{
                     Swal.fire({
                          title: 'เพิ่มข้อมูลไม่สำเส็จ',
